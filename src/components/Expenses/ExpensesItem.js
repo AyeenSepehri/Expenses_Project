@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from './Card'
+import Card from '../UI/Card'
 import ExpensesDate from './ExpensesDate'
 import "./ExpensesItem.css"
 function ExpensesItem(props) {
