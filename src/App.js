@@ -1,4 +1,6 @@
 import Expenses from "./components/Expenses/Expenses"
+import NewExpenses from "./components/NewExpenses/NewExpenses";
+
 function App() {
   const expenses = [
     {
@@ -21,8 +23,15 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  //take datas from child NewExpenses component to app.js
+    const addExpensesHandler = (expense) => {
+      console.log(expense)
+    }
+
   return (
     <div className="App">
+      <NewExpenses addExpenses = {addExpensesHandler} />
       <Expenses items = {expenses} />
     </div>
   );
