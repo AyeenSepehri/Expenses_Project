@@ -7,17 +7,26 @@ import ExpensesFilter from './ExpensesFilter'
 function Expenses(props) {
 
     //state of drop down filter
-    const [year, setYear] = useState("")
+    const [year, setYear] = useState("all")
 
     //function of takeing datas of drop down filter
     const onYear = (years) => {
         setYear(years)
     }
 
+    //define a function for filtering items with drop down
+    const filteredExpenses = props.items.filter((expenses) => {
+        if(year === "all"){
+            return expenses
+        }else{
+            return expenses.date.getFullYear().toString() === year
+        }
+    })
+
     return (
         <Card className='expenses'>
             <ExpensesFilter yearValue={year} yearPicker={onYear} />
-            {props.items.map(expenses => <ExpensesItem key={expenses.id} title={expenses.title} amount={expenses.amount} date={expenses.date} />)}
+            {filteredExpenses.map(expenses => <ExpensesItem key={expenses.id} title={expenses.title} amount={expenses.amount} date={expenses.date} />)}
         </Card>
     )
 }
